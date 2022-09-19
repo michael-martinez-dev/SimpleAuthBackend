@@ -11,7 +11,8 @@ pipeline {
       parallel {
         stage('Log') {
           steps {
-            sh 'ls -la'
+            sh '''ls -la
+&& ls -1 / && ls -1 /usr/local/'''
           }
         }
 
