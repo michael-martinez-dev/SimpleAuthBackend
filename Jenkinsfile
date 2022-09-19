@@ -8,7 +8,7 @@ pipeline {
       }
     }
 
-    stage('Log') {
+    stage('Testing') {
       parallel {
         stage('Log') {
           steps {
