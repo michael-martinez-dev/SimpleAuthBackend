@@ -1,18 +1,18 @@
 package controllers
 
 import (
-	"github.com/mixedmachine/simple-signin-backend/pkg/models"
-	"github.com/mixedmachine/simple-signin-backend/pkg/repository"
-	"github.com/mixedmachine/simple-signin-backend/pkg/security"
-	"github.com/mixedmachine/simple-signin-backend/pkg/util"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/models"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/repository"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/security"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/util"
 
 	"net/http"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
+	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"
 	"gopkg.in/asaskevich/govalidator.v9"
-	log "github.com/sirupsen/logrus"
 )
 
 // UserController defines the interface for user controller
@@ -35,7 +35,7 @@ func NewUserController(repos map[string]interface{}) UserController {
 	return &userController{
 		usersRepo:  repos["users"].(repository.UsersRepository),
 		tokensRepo: repos["tokens"].(repository.TokenRepository),
-		logger:	    util.InitLogger(),
+		logger:     util.InitLogger(),
 	}
 }
 

@@ -1,6 +1,6 @@
 package main
 
-import "github.com/mixedmachine/simple-signin-backend/cmd/v1/api"
+import "github.com/mixedmachine/SimpleAuthBackend/cmd/v1/api"
 
 func main() {
 	api.Init()

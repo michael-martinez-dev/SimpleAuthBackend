@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/mixedmachine/simple-signin-backend/pkg/controllers"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/controllers"
 
 	"fmt"
 	"net/http"
