@@ -4,6 +4,7 @@ pipeline {
     stage('Checkout Code') {
       steps {
         git(url: 'https://github.com/MixedMachine/simple-signin-backend', branch: 'prod')
+        sh 'go mod tidy'
       }
     }
 
