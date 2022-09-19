@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"github.com/mixedmachine/simple-signin-backend/pkg/repository"
-	"github.com/mixedmachine/simple-signin-backend/pkg/util"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/repository"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/util"
 
 	"log"
 

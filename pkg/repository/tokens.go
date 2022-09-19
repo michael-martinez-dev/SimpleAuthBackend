@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"github.com/mixedmachine/simple-signin-backend/pkg/db"
-	"github.com/mixedmachine/simple-signin-backend/pkg/util"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/db"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/util"
 
 	"context"
 	"fmt"

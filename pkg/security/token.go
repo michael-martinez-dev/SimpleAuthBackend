@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/mixedmachine/simple-signin-backend/pkg/util"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/util"
 
 	"github.com/golang-jwt/jwt/v4"
 )

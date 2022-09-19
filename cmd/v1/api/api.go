@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mixedmachine/simple-signin-backend/pkg/controllers"
-	"github.com/mixedmachine/simple-signin-backend/pkg/db"
-	"github.com/mixedmachine/simple-signin-backend/pkg/repository"
-	"github.com/mixedmachine/simple-signin-backend/pkg/routes"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/controllers"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/db"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/repository"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/routes"
 
 	"log"
 

@@ -3,8 +3,8 @@ package routes
 import (
 	"net/http"
 
-	"github.com/mixedmachine/simple-signin-backend/pkg/security"
-	"github.com/mixedmachine/simple-signin-backend/pkg/util"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/security"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/util"
 
 	"github.com/gofiber/fiber/v2"
 	jwtware "github.com/gofiber/jwt/v2"

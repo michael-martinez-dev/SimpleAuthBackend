@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"github.com/mixedmachine/simple-signin-backend/pkg/models"
-	"github.com/mixedmachine/simple-signin-backend/pkg/repository"
-	"github.com/mixedmachine/simple-signin-backend/pkg/security"
-	"github.com/mixedmachine/simple-signin-backend/pkg/util"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/models"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/repository"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/security"
+	"github.com/mixedmachine/SimpleAuthBackend/pkg/util"
 
 	log "github.com/sirupsen/logrus"
 	"net/http"
