@@ -1,4 +1,4 @@
-# simple-signin-backend
+# SimpleAuthBackend
 ## Users
 * CRUD operations
 * Mongodb Backend

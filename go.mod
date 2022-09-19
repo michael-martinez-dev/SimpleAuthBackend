@@ -1,4 +1,4 @@
-module github.com/mixedmachine/simple-signin-backend
+module github.com/mixedmachine/SimpleAuthBackend
 
 go 1.19
 

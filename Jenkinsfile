@@ -24,7 +24,7 @@ pipeline {
     stage('Unit tests') {
       steps {
         echo 'Running Unit tests...'
-        sh 'go test ./...'
+        sh 'go test ./tests/unit/...'
       }
     }
 
