@@ -8,9 +8,20 @@ pipeline {
     }
 
     stage('Log') {
-      steps {
-        sh 'ls -la'
-        sh 'go version'
+      parallel {
+        stage('Log') {
+          steps {
+            sh 'ls -la'
+            sh 'go version'
+          }
+        }
+
+        stage('Unit tests') {
+          steps {
+            sh 'go test ./...'
+          }
+        }
+
       }
     }
 
