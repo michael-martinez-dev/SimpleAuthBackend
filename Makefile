@@ -3,7 +3,7 @@ APP_VERSION = v1
 APP_BIN = server
 
 
-.PHONY: db dev pipeline build-docker image image-run compose 
+.PHONY: db dev pipeline image image-push image-run compose 
 
 
 build: main.go pkg/* cmd/*
@@ -23,9 +23,13 @@ pipeline:
 dockerfile:
 	go build -o ./bin/$(APP_BIN) main.go
 
-image: build-docker
+image:
 	docker build -f ./build/Dockerfile -t $(APP_NAME):latest .
 	docker build -f ./build/Dockerfile -t $(APP_NAME):$(APP_VERSION) .
+
+image-push:
+	docker push $(APP_NAME):latest
+	docker push $(APP_NAME):$(APP_VERSION)
 
 # This will not be able to connect to mongo unless you change the .env
 # to a reachable host. Instead use compose.

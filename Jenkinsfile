@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('Checkout Code') {
           steps {
-            git(url: 'https://github.com/MixedMachine/simple-signin-backend', branch: 'prod')
+            git(url: 'https://github.com/MixedMachine/SimpleAuthBackend', branch: 'prod')
             sh 'go mod tidy'
           }
         }
@@ -33,6 +33,7 @@ pipeline {
         stage('Build images') {
           steps {
             echo 'Building docker images & pushing them to repo...'
+            sh make image
           }
         }
 
@@ -43,7 +44,6 @@ pipeline {
         }
 
         stage('Log into Docker') {
-          agent any
           steps {
             sh 'docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PW'
           }
@@ -61,6 +61,13 @@ pipeline {
     stage('Functional tests') {
       steps {
         echo 'Running functional tests with postman...'
+      }
+    }
+
+    stage('Docker Hub push') {
+      steps {
+        echo 'Pushing to Dockerhub...'
+        sh make push
       }
     }
 
