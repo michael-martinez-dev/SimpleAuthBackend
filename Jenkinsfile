@@ -42,6 +42,17 @@ pipeline {
           }
         }
 
+        stage('Log into Docker') {
+          agent any
+          environment {
+            DOCKER_HUB_USER = 'mixedmachine'
+            DOCKER_HUB_PW = '4256#Eugene'
+          }
+          steps {
+            sh 'docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PW'
+          }
+        }
+
       }
     }
 
