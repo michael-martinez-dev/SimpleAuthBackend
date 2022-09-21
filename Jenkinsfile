@@ -42,6 +42,13 @@ pipeline {
           }
         }
 
+        stage('Log into Docker') {
+          agent any
+          steps {
+            sh 'docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PW'
+          }
+        }
+
       }
     }
 
