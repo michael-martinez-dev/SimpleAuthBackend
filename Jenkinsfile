@@ -87,7 +87,7 @@ pipeline {
     stage('Docker Hub push') {
       steps {
         echo 'Pushing to Dockerhub...'
-        sh 'make push'
+        sh 'make image-push'
       }
     }
 
@@ -97,5 +97,13 @@ pipeline {
       }
     }
 
+    finally {
+      stage('Clean up') {
+        steps {
+          echo 'Cleaning up...'
+          sh 'make clean'
+        }
+      }
+    }
   }
 }
