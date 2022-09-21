@@ -18,6 +18,25 @@ pipeline {
           }
         }
 
+        stage('Env vars set-up') {
+          steps {
+            sh 'echo "LOG_LEVEL=$SAB_LOG_LEVEL" >> .env'
+            sh 'echo "API_PORT=$SAB_API_PORT" >> .env'
+            sh 'echo "DATABASE_USER=$SAB_DATABASE_USER" >> .env'
+            sh 'echo "DATABASE_PASS=$SAB_DATABASE_PASS" >> .env'
+            sh 'echo "DATABASE_HOST=$SAB_DATABASE_HOST" >> .env'
+            sh 'echo "DATABASE_PORT=$SAB_DATABASE_PORT" >> .env'
+            sh 'echo "DATABASE_NAME=$SAB_DATABASE_NAME" >> .env'
+            sh 'echo "DATABASE_COLLECTION=$SAB_DATABASE_COLLECTION" >> .env'
+            sh 'echo "REDIS_HOST=$SAB_REDIS_HOST" >> .env'
+            sh 'echo "REDIS_PORT=$SAB_REDIS_PORT" >> .env'
+            sh 'echo "REDIS_USER=$SAB_REDIS_USER" >> .env'
+            sh 'echo "REDIS_PASS=$SAB_REDIS_PASS" >> .env'
+            sh 'echo "REDIS_DB=$SAB_REDIS_DB" >> .env'
+            sh 'echo "JWT_SECRET_KEY=$SAB_JWT_SECRET_KEY" >> .env'
+            sh 'echo "" >> .env'
+          }
+        }
       }
     }
 
