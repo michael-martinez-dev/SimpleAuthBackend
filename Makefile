@@ -2,6 +2,8 @@ APP_NAME = user-auth
 APP_VERSION = v1
 APP_BIN = server
 
+DOCKERHUB_USER=mixedmachine
+
 
 .PHONY: db dev pipeline image image-push image-run compose 
 
@@ -28,8 +30,11 @@ image:
 	docker build -f ./build/Dockerfile -t $(APP_NAME):$(APP_VERSION) .
 
 image-push:
-	docker push $(APP_NAME):latest
-	docker push $(APP_NAME):$(APP_VERSION)
+	docker tag $(APP_NAME):latest $(DOCKERHUB_USER)/$(APP_NAME):latest
+	docker tag $(APP_NAME):$(APP_VERSION) $(DOCKERHUB_USER)/$(APP_NAME):$(APP_VERSION)
+
+	docker push $(DOCKERHUB_USER)/$(APP_NAME):latest
+	docker push $(DOCKERHUB_USER)/$(APP_NAME):$(APP_VERSION)
 
 # This will not be able to connect to mongo unless you change the .env
 # to a reachable host. Instead use compose.
