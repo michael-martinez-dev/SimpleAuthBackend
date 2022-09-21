@@ -97,13 +97,16 @@ pipeline {
       }
     }
 
-    finally {
-      stage('Clean up') {
-        steps {
-          echo 'Cleaning up...'
+  }
+  post {
+      always {
           sh 'make clean'
-        }
       }
-    }
+      success {
+          echo 'The Pipeline was successful! 🎉'
+      }
+      failure {
+          echo'The Pipeline failed 😔'
+      }
   }
 }
