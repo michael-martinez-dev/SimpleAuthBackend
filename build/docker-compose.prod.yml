@@ -1,0 +1,64 @@
+version: '3.8'
+# production services
+services:
+  # production web service
+  nginx:
+    image: nginx:1.19.6-alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./build/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./build/nginx/certs:/etc/nginx/certs
+    networks:
+      - web
+    depends_on:
+      - app
+  app:
+    container_name: app
+    hostname: app
+    image: mixedmachine/user-auth:v1
+    expose:
+      - "8080"
+    depends_on:
+      - db
+    env_file:
+      - prod.env
+    networks:
+      - web
+      - mongo-net
+      - redis-net
+  # production database services
+  monogo:
+    container_name: mongo
+    hostname: mongo
+    image: mongo:4.4
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    env_file:
+      - mongo.env
+    networks:
+      - mongo-net
+  redis:
+    container_name: redis
+    hostname: redis
+    image: redis:1.23
+    ports:
+      - "6379:6379"
+    env_file:
+      - redis.env
+    networks:
+      - redis-net
+
+volumes:
+  db_data:
+
+networks:
+  web:
+  mongo-net:
+  redis-net:
+
