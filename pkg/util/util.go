@@ -47,5 +47,8 @@ func NewJError(err error) JError {
 }
 
 func NormalizeEmail(email string) string {
-	return strings.TrimSpace(strings.ToLower(email))
+	normalizedEmail := strings.ToLower(email)
+	normalizedEmail = strings.TrimSpace(normalizedEmail)
+	normalizedEmail = strings.Trim(normalizedEmail, "\\")
+	return normalizedEmail
 }

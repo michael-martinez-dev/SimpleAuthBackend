@@ -195,6 +195,7 @@ func (c *authController) Authenticator(ctx *fiber.Ctx) error {
 // verifyUser verifies the user input and returns an error if the input is invalid
 func verifyUser(user *models.User, c *authController) error {
 	c.logger.Debug("verifyUser Function")
+	c.logger.Debugf("verifyUser Function| User: %v", user)
 	if user.Email == "" {
 		return util.ErrInvalidEmail
 	}
