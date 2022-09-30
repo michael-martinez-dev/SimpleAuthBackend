@@ -90,6 +90,7 @@ func (r *usersRepository) GetById(id string) (user *models.User, err error) {
 }
 
 func (r *usersRepository) GetByEmail(email string) (user *models.User, err error) {
+	r.logger.Debugf("Get user by email: %s\n", email)
 	err = r.coll.FindOne(
 		context.TODO(),
 		bson.D{{Key: "email", Value: email}},

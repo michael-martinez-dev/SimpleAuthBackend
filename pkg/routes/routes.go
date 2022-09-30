@@ -4,10 +4,8 @@ import (
 	"github.com/mixedmachine/SimpleAuthBackend/pkg/controllers"
 
 	"fmt"
-	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"go.mongodb.org/mongo-driver/bson"
 )
 
 const apiVersion = "v1"
@@ -25,27 +23,11 @@ func NewAuthRoutes(authController controllers.AuthController, userController con
 }
 
 func (r *authRoutes) Install(app *fiber.App) {
-	app.Get("/", func(ctx *fiber.Ctx) error {
-		return ctx.
-			Status(http.StatusOK).
-			JSON(bson.D{
-				{Key: "message", Value: "Welcome to EfficientLife"},
-				{Key: "service", Value: "user-auth"},
-				{Key: "author", Value: "MixedMachine"},
-				{Key: "status", Value: http.StatusOK},
-				{Key: "version", Value: apiVersion},
-				{Key: "api_base_endpoint", Value: "/api/" + apiVersion},
-				{Key: "api_endpoints", Value: []string{
-					"/ping",
-					"/signup",
-					"/signin",
-					"/refresh",
-					"/users/",
-					"/users/:id",
-					"/auth/:id",
-				}},
-			})
-	})
+	app.Get("/ping", r.authController.Ping)
+
+	/********************************
+	 * Authentication & User Routes *
+	 ********************************/
 	api := app.Group(fmt.Sprintf("/api/%s", apiVersion))
 
 	// Health check
