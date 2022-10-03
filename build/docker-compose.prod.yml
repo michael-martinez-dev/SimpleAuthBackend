@@ -2,22 +2,9 @@ version: '3.8'
 # production services
 services:
   # production web service
-  nginx:
-    image: nginx:1.19
-    container_name: nginx
-    restart: always
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./nginx:/etc/nginx
-    networks:
-      - web
-    depends_on:
-      - app
-  app:
-    container_name: app
-    hostname: app
+  auth-api:
+    container_name: auth-api
+    hostname: auth-api
     image: mixedmachine/user-auth:v1
     expose:
       - "8080"
@@ -27,7 +14,7 @@ services:
     env_file:
       - ../prod.env
     networks:
-      - web
+      - web-net
       - mongo-net
       - redis-net
   # production database services
@@ -58,7 +45,8 @@ volumes:
   mongo_data:
 
 networks:
-  web:
+  web-net:
+    name: web-net
   mongo-net:
   redis-net:
 
