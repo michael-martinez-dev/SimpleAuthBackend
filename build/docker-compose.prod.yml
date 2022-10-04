@@ -28,9 +28,6 @@ services:
       - "27017:27017"
     env_file:
       - ../mongo.env
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: mixedmachine
-      MONGO_INITDB_ROOT_PASSWORD: secret
     networks:
       - mongo-net
   redis:
