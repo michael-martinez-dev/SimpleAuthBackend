@@ -21,13 +21,16 @@ services:
   mongo:
     container_name: mongo
     hostname: mongo
-    image: mongo:4.4
+    image: mongo:6.0
     volumes:
       - mongo_data:/data/db
     ports:
       - "27017:27017"
     env_file:
       - ../mongo.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mixedmachine
+      MONGO_INITDB_ROOT_PASSWORD: secret
     networks:
       - mongo-net
   redis:
