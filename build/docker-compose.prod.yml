@@ -24,8 +24,8 @@ services:
     image: mongo:6.0
     volumes:
       - mongo_data:/data/db
-    ports:
-      - "27017:27017"
+    expose:
+      - "27017"
     env_file:
       - ../mongo.env
     networks:
@@ -34,8 +34,8 @@ services:
     container_name: redis
     hostname: redis
     image: redis:7.0-alpine
-    ports:
-      - "6379:6379"
+    expose:
+      - "6379"
     env_file:
       - ../redis.env
     networks:
